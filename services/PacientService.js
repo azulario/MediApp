@@ -1,23 +1,23 @@
-import patientRepository from "../repositories/PatientRepository";
+import pacientRepository from "../repositories/PacientRepository.js";
 
 const getAllPacients = async () => {
-    return patientRepository.getAllPacients();
+    return pacientRepository.getAllPacients();
 }
 
 const getPacient = async (id) => {
-    return patientRepository.getPacientById(id);
+    return pacientRepository.getPacientById(id);
 }
 
 const savePacient = async ({pacientId, name, login, password, email, phone}) => {
-    return patientRepository.savePacient({pacientId, name, login, password, email, phone});
+    return pacientRepository.savePacient({pacientId, name, login, password, email, phone});
 }
 
 const updatePacient = async (id, {pacientId, name, login, password, email, phone}) => {
-    return patientRepository.updatePacient(id, {pacientId, name, login, password, email, phone});
+    return pacientRepository.updatePacient(id, {pacientId, name, login, password, email, phone});
 }
 
 const deletePacient = async (id) => {
-    return patientRepository.deletePacient(id);
+    return pacientRepository.deletePacient(id);
 }
 
 const pacienttService = {

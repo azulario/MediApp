@@ -1,6 +1,6 @@
-import { Mongoose } from "mongoose";
+import mongoose from "mongoose";
 
-const Schema = Mongoose.Schema;
+const Schema = mongoose.Schema;
 
 const appointmentSchema = new Schema({
     date: {
@@ -21,6 +21,6 @@ const appointmentSchema = new Schema({
     }
 });
 
-const Appointment = Mongoose.model('Appointment', appointmentSchema);
+const Appointment = mongoose.model('Appointment', appointmentSchema);
 
 export default Appointment;

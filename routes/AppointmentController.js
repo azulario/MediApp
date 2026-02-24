@@ -1,5 +1,5 @@
-import { express } from 'express';
-import appointmentService from '../services/AppointimentService';
+import express from 'express';
+import appointmentService from '../services/AppointimentService.js';
 
 let router = express.Router();
 
@@ -60,3 +60,4 @@ router.delete("/deleteAppointment/:id", async (req, res) => {
 });
 
 export default router;
+

@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import prescriptiontService from '../services/PrescriptionService';
 
 const Schema = mongoose.Schema;
 
@@ -32,3 +31,7 @@ const prescriptionSchema = new Schema({
         default: Date.now
     }
 });
+
+const Prescription = mongoose.model('Prescription', prescriptionSchema);
+
+export default Prescription;

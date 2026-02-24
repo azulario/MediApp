@@ -1,6 +1,6 @@
-import { Moongoose } from 'mongoose';
+import mongoose from 'mongoose';
 
-const Schema = Moongoose.Schema;
+const Schema = mongoose.Schema;
 
 const doctorSchema = new Schema({
     doctorId: {
@@ -46,6 +46,6 @@ const doctorSchema = new Schema({
     }
 });
 
-const Doctor = Moongoose.model('Doctor', doctorSchema);
+const Doctor = mongoose.model('Doctor', doctorSchema);
 
 export default Doctor;

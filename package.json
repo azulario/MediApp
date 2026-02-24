@@ -2,6 +2,7 @@
   "name": "mediapp",
   "version": "1.0.0",
   "description": "Mini projeto da disciplina Programação II",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,6 +10,7 @@
   "author": "Nathalia Veiga",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "express": "^5.2.1",
     "mongoose": "^9.2.2"
   }

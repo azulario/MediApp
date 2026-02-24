@@ -1,4 +1,4 @@
-import Doctor from "../models/Doctor";
+import Doctor from "../models/Doctor.js";
 
 const getAllDoctors = async () => {
     return await Doctor.find();
@@ -59,7 +59,10 @@ const deleteDoctor = async (id) => {
 
 const doctorRepository = {
     getAllDoctors,
-    getDoctorById   
+    getDoctorById,
+    saveDoctor,
+    updateDoctor,
+    deleteDoctor
 };
 
 export default doctorRepository;
