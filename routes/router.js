@@ -1,4 +1,4 @@
-import { express } from "express";
+import express from "express";
 import appointmentController from "./AppointmentController";
 import doctorController from "./DoctorController";
 import patientController from "./PatientController";

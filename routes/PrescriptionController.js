@@ -1,56 +1,65 @@
 import { express } from 'express';
-import appointmentService from '../services/AppointimentService';
+
+import prescriptionService from '../services/PrescriptionService';
 
 let router = express.Router();
 
-router.get("/appointments", async (req, res) => {
+router.get("/prescriptions", async (req, res) => {
     try {
-        const appointments = await appointmentService.getAllAppointments();
-        res.send(appointments);
+        const prescriptions = await prescriptionService.getAllPrescriptions();
+        res.send(prescriptions);
     } catch (error) {
         console.log(error);
-        res.status(500).send({ message: "Error fetching appointments" });
+        res.status(500).send({ message: "Error fetching prescriptions" });
     }
 });
 
-router.get("/getAppointment/:id", async (req, res) => {
+router.get("/getPrescription/:id", async (req, res) => {
     try {
-        const appointment = await appointmentService.getAppointment(req.params.id);
-        res.send(appointment);
+        const prescription = await prescriptionService.getPrescription(req.params.id);
+        res.send(prescription);
     } catch (error) {
         console.log(error);
-        res.status(500).send({ message: "Error fetching appointment" });
+        res.status(500).send({ message: "Error fetching prescription" });
     }
 });
 
-router.post("/saveAppointment", async (req, res) => {
+router.post("/postPrescription", async (req, res) => {
+    const { doctorId, pacientId, appointmentId, medication, dosage, frequency, duration } = req.body;
     try {
-        const appointment = await appointmentService.saveAppointment(req.body);
-        res.send(appointment);
+        const prescription = await prescriptionService.savePrescription({ 
+            doctorId, 
+            pacientId, 
+            appointmentId, 
+            medication, 
+            dosage, 
+            frequency, 
+            duration });
+        res.send(prescription);
     } catch (error) {
         console.log(error);
-        res.status(500).send({ message: "Error saving appointment" });
+        res.status(500).send({ message: "Error saving prescription" });
     }
 });
 
-router.put("/updateAppointment/:id", async (req, res) => {
+router.put("/updatePrescription/:id", async (req, res) => {
     try {
-        const appointment = await appointmentService.updateAppointment(req.params.id, req.body);
-        res.send(appointment);
+        const prescription = await prescriptionService.updatePrescription(req.params.id, req.body);
+        res.send(prescription);
     } catch (error) {
         console.log(error);
-        res.status(500).send({ message: "Error updating appointment" });
+        res.status(500).send({ message: "Error updating prescription" });
     }
 });
 
-router.delete("/deleteAppointment/:id", async (req, res) => {
+router.delete("/deletePrescription/:id", async (req, res) => {
     try {
-        const appointment = await appointmentService.deleteAppointment(req.params.id);
-        res.send(appointment);
+        const prescription = await prescriptionService.deletePrescription(req.params.id);
+        res.send(prescription);
     } catch (error) {
         console.log(error);
-        res.status(500).send({ message: "Error deleting appointment" });
+        res.status(500).send({ message: "Error deleting prescription" });
     }
 });
 
-export default router();
+export default router;

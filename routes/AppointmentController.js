@@ -23,9 +23,15 @@ router.get("/getAppointment/:id", async (req, res) => {
     }
 });
 
-router.post("/saveAppointment", async (req, res) => {
+router.post("/postAppointment", async (req, res) => {
+    const { doctorId, pacientId, date, time, reason } = req.body;
     try {
-        const appointment = await appointmentService.saveAppointment(req.body);
+        const appointment = await appointmentService.saveAppointment({ 
+            doctorId, 
+            pacientId, 
+            date, 
+            time, 
+            reason });
         res.send(appointment);
     } catch (error) {
         console.log(error);
