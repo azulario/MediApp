@@ -12,11 +12,11 @@ const getPacientById = async (id) => {
     }
 }
 
-const savePacient = async ({pacientId, name,email, phone}) => {
+const savePacient = async ({name, birthDate, email, phone}) => {
    try {
         const pacient = new Pacient({
-            pacientId,
             name,
+            birthDate,
             email,
             phone
         });
@@ -26,11 +26,11 @@ const savePacient = async ({pacientId, name,email, phone}) => {
    }
 }
 
-const updatePacient = async (id, {pacientId, name, email, phone}) => {
+const updatePacient = async (id, {name, birthDate, email, phone}) => {
     try {
         return await Pacient.findByIdAndUpdate(id, {
-            pacientId,
             name,
+            birthDate,
             email,
             phone
         }, { new: true });

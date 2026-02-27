@@ -12,7 +12,7 @@ app.use(urlencoded({extended: true}));
 app.use(cors());
 
 app.listen(3000, function() {
-    console.log("Listening to port 3000");
+    console.log("Listening to port 3000");s
 });
 
 app.use("/", router);

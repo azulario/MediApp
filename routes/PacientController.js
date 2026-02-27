@@ -24,12 +24,11 @@ router.get("/getPacient/:id", async (req, res) => {
 });
 
 router.post("/postPacient", async (req, res) => {
-    const { name, login, password, email, phone } = req.body;
+    const { name, birthDate, email, phone } = req.body;
     try {
         const pacient = await pacienttService.savePacient({ 
             name, 
-            login, 
-            password, 
+            birthDate, 
             email, 
             phone });
         res.send(pacient);
