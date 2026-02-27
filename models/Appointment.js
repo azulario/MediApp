@@ -11,9 +11,9 @@ const appointmentSchema = new Schema({
         type: String,
         required: [true, 'doctor id is required']
     },
-    patientId: {
+    pacientId: {
         type: String,
-        required: [true, 'patient id is required']
+        required: [true, 'pacient id is required']
     },
     createdAt: {
         type: Date,

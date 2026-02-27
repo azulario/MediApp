@@ -25,7 +25,8 @@ router.get("/getDoctor/:id", async (req, res) => {
 });
 
 router.post("/postDoctor", async (req, res) => {
-    const {name, login, password, medicalSpecialization, medicalRegistration, email, phone } = req.body;
+    const {name, login, password, medicalRegistration, email, phone } = req.body;
+    const medicalSpecialization = req.body.medicalSpecialization || req.body.medicalSpecialty;
     try {
         const hashedPassword = await hash(password, 10);
         const doctor = await doctorService.saveDoctor({ 
@@ -36,7 +37,7 @@ router.post("/postDoctor", async (req, res) => {
             medicalRegistration, 
             email, 
             phone });
-        res.send(doctor);
+        res.status(201).send(doctor);
     } catch (error) {
         console.log(error);
         res.status(500).send({ message: "Error saving doctor" });
@@ -46,7 +47,7 @@ router.post("/postDoctor", async (req, res) => {
 router.put("/putDoctor/:id", async (req, res) => {
     try {
         const doctor = await doctorService.updateDoctor(req.params.id, req.body);
-        res.send(doctor);
+        res.status(200).send(doctor);
     } catch (error) {
         console.log(error);
         res.status(500).send({ message: "Error updating doctor" });

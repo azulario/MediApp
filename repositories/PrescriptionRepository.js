@@ -8,7 +8,7 @@ const getPrescriptionById = async (id) => {
     try {
         return await Prescription.findById(id);
     } catch (error) {
-        throw new Error('Failed to retrieve prescription');
+        throw new Error('Failed to retrieve prescription: ' + error.message);
     }
 }
 
@@ -23,7 +23,7 @@ const savePrescription = async ({date, doctorId, pacientId, medication, dosage})
         });
         return await prescription.save();
     } catch (error) {
-        throw new Error('Failed to save prescription');
+        throw new Error('Failed to save prescription: ' + error.message);
     }
 }
 
@@ -37,7 +37,7 @@ const updatePrescription = async (id, {date, doctorId, pacientId, medication, do
             dosage
         }, { new: true });  
     } catch (error) {
-        throw new Error('Failed to update prescription');
+        throw new Error('Failed to update prescription: ' + error.message);
     }
 }
 
@@ -45,7 +45,7 @@ const deletePrescription = async (id) => {
     try {
         return await Prescription.findByIdAndDelete(id);
     } catch (error) {
-        throw new Error('Failed to delete prescription');
+        throw new Error('Failed to delete prescription: ' + error.message);
     }
 }
 

@@ -14,8 +14,9 @@ const getDoctorById = async (id) => {
 
 const saveDoctor = async ({doctorId, name, login, password, medicalSpecialization, medicalRegistration, email, phone}) => {
    try {
+        const id = doctorId || Date.now().toString();
         const doctor = new Doctor({
-            doctorId,
+            doctorId: id,
             name,
             login,
             password,
@@ -26,7 +27,7 @@ const saveDoctor = async ({doctorId, name, login, password, medicalSpecializatio
         });
         return await doctor.save();
     } catch (error) {
-        throw new Error('Failed to save doctor');
+        throw new Error('Failed to save doctor: ' + error.message);
    }
 }
 
@@ -44,7 +45,7 @@ const updateDoctor = async (id, {doctorId, name, login, password, medicalSpecial
         }, { new: true });
 
     } catch (error) {
-        throw new Error('Failed to update doctor');
+        throw new Error('Failed to update doctor: ' + error.message);
     }
 
 }
@@ -53,7 +54,7 @@ const deleteDoctor = async (id) => {
     try {
         return await Doctor.findByIdAndDelete(id);
     } catch (error) {
-        throw new Error('Failed to delete doctor');
+        throw new Error('Failed to delete doctor: ' + error.message);
     }
 }
 
