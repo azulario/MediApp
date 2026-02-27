@@ -12,9 +12,11 @@ const getPacientById = async (id) => {
     }
 }
 
-const savePacient = async ({name, birthDate, email, phone}) => {
+const savePacient = async ({pacientId, name, birthDate, email, phone}) => {
    try {
+        const id = pacientId || Date.now().toString();
         const pacient = new Pacient({
+            pacientId: id,
             name,
             birthDate,
             email,
