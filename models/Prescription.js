@@ -7,17 +7,13 @@ const prescriptionSchema = new Schema({
         type: Date,
         required: [true, 'prescription date is required']
     },
-    doctorId: {
+    appointmentId: {
         type: String,
-        required: [true, 'prescription doctor id is required']
+        required: [true, 'appointment id is required']
     },
-    pacientId: {
+    medication: {
         type: String,
-        required: [true, 'prescription pacient id is required']
-    },
-    medicineName: {
-        type: String,
-        required: [true, 'prescription medicine name is required']
+        required: [true, 'prescription medication is required']
     },
     dosage: {
         type: String,

@@ -8,12 +8,22 @@ const getPrescription = async (id) => {
     return prescriptionRepository.getPrescriptionById(id);
 }
 
-const savePrescription = async ({date, doctorId, pacientId, medication, dosage}) => {
-    return prescriptionRepository.savePrescription({date, doctorId, pacientId, medication, dosage});
+const savePrescription = async ({date, appointmentId, medication, dosage, instructions}) => {
+    return prescriptionRepository.savePrescription({
+        date, 
+        appointmentId,
+        medication, 
+        dosage, 
+        instructions});
 }
 
-const updatePrescription = async (id, {date, doctorId, pacientId, medication, dosage}) => {
-    return prescriptionRepository.updatePrescription(id, {date, doctorId, pacientId, medication, dosage});
+const updatePrescription = async (id, {date, appointmentId, medication, dosage, instructions}) => {
+    return prescriptionRepository.updatePrescription(id, {
+        date, 
+        appointmentId,
+        medication, 
+        dosage, 
+        instructions});
 }
 
 const deletePrescription = async (id) => {

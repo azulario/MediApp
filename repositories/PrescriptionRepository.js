@@ -12,14 +12,14 @@ const getPrescriptionById = async (id) => {
     }
 }
 
-const savePrescription = async ({date, doctorId, pacientId, medication, dosage}) => {
+const savePrescription = async ({date, appointmentId, medication, dosage, instructions}) => {
     try {
         const prescription = new Prescription({
             date,
-            doctorId,
-            pacientId,
+            appointmentId,
             medication,
-            dosage
+            dosage,
+            instructions
         });
         return await prescription.save();
     } catch (error) {
@@ -27,14 +27,14 @@ const savePrescription = async ({date, doctorId, pacientId, medication, dosage})
     }
 }
 
-const updatePrescription = async (id, {date, doctorId, pacientId, medication, dosage}) => {
+const updatePrescription = async (id, {date, appointmentId, medication, dosage, instructions}) => {
     try {
         return await Prescription.findByIdAndUpdate(id, {
             date,
-            doctorId,
-            pacientId,
+            appointmentId,
             medication,
-            dosage
+            dosage,
+            instructions
         }, { new: true });  
     } catch (error) {
         throw new Error('Failed to update prescription: ' + error.message);

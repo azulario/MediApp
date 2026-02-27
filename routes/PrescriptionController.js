@@ -25,11 +25,10 @@ router.get("/getPrescription/:id", async (req, res) => {
 });
 
 router.post("/postPrescription", async (req, res) => {
-    const { doctorId, pacientId, appointmentId, medication, dosage, frequency, duration } = req.body;
+    const { date, appointmentId, medication, dosage, frequency, duration } = req.body;
     try {
-        const prescription = await prescriptionService.savePrescription({ 
-            doctorId, 
-            pacientId, 
+        const prescription = await prescriptionService.savePrescription({
+            date,  
             appointmentId, 
             medication, 
             dosage, 
@@ -40,6 +39,7 @@ router.post("/postPrescription", async (req, res) => {
         console.log(error);
         res.status(500).send({ message: "Error saving prescription" });
     }
+    
 });
 
 router.put("/updatePrescription/:id", async (req, res) => {
